@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<meta charset="UTF-8">
+<title>
+    雨花台预约游览
+</title>
+<link href="/static/css/index.css" rel="stylesheet">
+<script src="/static/js/index.js" type="text/javascript"></script>
+<script language="JavaScript">
+function toVaild(){
+                var val = document.getElementById("id_card_id").value;
+
+                if(val.length == 18){
+                    return true;
+                }
+                else{
+                    alert("请输入有效的身份证号！");
+                    return false;
+                }
+}
+</script>
+<body style="margin:0px">
+<div style="background-color:red;height:60px;font-family:'Georgia';font-size:35px;color:white">雨花台入场查询</div>
+
+<!--选项卡-->
+    <div id="tab">
+        <!--主要内容-->
+        <div id="tab-content">
+            <div class="dom" style="display: block;" id="dom1">
+                <p>&nbsp&nbsp请输入领队人身份证号码进行查询:</p>
+                <form name = "reg_testdate" action="/search_team/" method="post" onsubmit="return toVaild()">
+                    {% csrf_token %}
+                    &nbsp&nbsp身份证号码:&nbsp&nbsp&nbsp&nbsp<input type="text" name="card_id" id="id_card_id">
+
+                    <input type="submit" value="查询">
+                </form>
+                <table>
+                    <tr>
+                        <!--<img src = "/static/images/qr_123.png" ></img>-->
+                        <p>{{ ret_msg }}</p>
+                        <p>{{ register_link }}</p>
+                        <img src = {{ qr_code }} ></img>
+
+                    </tr>
+                </table>
+                <p>{{ xx }}</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
