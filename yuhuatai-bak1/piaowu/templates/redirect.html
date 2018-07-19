@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html debug="true">
+<script type="text/javascript">
+function check(){
+	var re_url = "http://111.231.93.28/wx_in/";
+	var redirect_url = "https://open.weixin.qq.com/connect/oauth2/authorize?state=123&response_type=code&appid=wx1f3fafdacfa38a4c&scope=snsapi_base&redirect_uri="+encodeURIComponent(re_url)+"#wechat_redirect"
+	window.location.href=redirect_url
+}
+</script>
+<body onload="check()">
+</body>
